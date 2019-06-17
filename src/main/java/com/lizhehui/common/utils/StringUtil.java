@@ -109,6 +109,7 @@ public class StringUtil {
 	public static String randomChineseString2(int length) {
 		String ss = "";
 		int min, max;
+
 		for (int i = 0; i < length; i++) {
 			char c = (char) (0x4e00 + (int) (Math.random() * (0x9fa5 - 0x4e00 + 1)));
 			ss += c;
