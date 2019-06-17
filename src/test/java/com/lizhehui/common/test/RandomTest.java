@@ -1,8 +1,5 @@
 package com.lizhehui.common.test;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.junit.Test;
 
 import com.lizhehui.common.utils.RandomUtil;
@@ -38,7 +35,7 @@ public class RandomTest {
 	@Test
 	public void subRandom() {
 		for (int i = 0; i < 10; i++) {
-			System.out.println(RandomUtil.subRandom(1, 10, 5));
+			System.out.println(RandomUtil.subRandom(1, 10, 9));
 		}
 	}
 
@@ -64,18 +61,18 @@ public class RandomTest {
 	@Test
 	public void randomString() {
 		for (int i = 0; i < 10; i++) {
-			System.out.println(RandomUtil.randomString(10));
+			System.out.println(RandomUtil.randomString(4));
 		}
 	}
 
-	@Test
-	public void aa() {
-		/*
-		 * String str = "123456789qazwsxedcrfvtgbyhnujmikolpQAZWSXEDCRFVTGBYHNUJMIKOLP";
-		 * System.out.println(str.length());
-		 */
-		SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		System.out.println(new Date() + s.format(new Date()));
-	}
+	/*
+	 * @Test public void aa() {
+	 * 
+	 * String str = "123456789qazwsxedcrfvtgbyhnujmikolpQAZWSXEDCRFVTGBYHNUJMIKOLP";
+	 * System.out.println(str.length());
+	 * 
+	 * SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	 * System.out.println(new Date() + s.format(new Date())); }
+	 */
 
 }

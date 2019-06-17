@@ -32,7 +32,7 @@ public class StringUtilTest {
 	 */
 	@Test
 	public void testHasText() {
-		System.out.println("是否有值" + StringUtil.hasText("  "));
+		System.out.println("是否有值" + StringUtil.hasText("11"));
 	}
 
 	/**
