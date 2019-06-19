@@ -22,7 +22,7 @@ public class RandomTest {
 	@Test
 	public void random() {
 		for (int i = 0; i < 10; i++) {
-		System.out.println(RandomUtil.random(1, 3));
+			System.out.println(RandomUtil.random(1, 6));
 		}
 	}
 

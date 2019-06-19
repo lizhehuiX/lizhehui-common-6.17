@@ -1,5 +1,8 @@
 package com.lizhehui.common.utils;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 public class StringUtil {
@@ -104,6 +107,28 @@ public class StringUtil {
 		String c = sname[r.nextInt(sname.length - 1)];
 		name += c + randomChineseString(RandomUtil.random(1, 2));
 		return name;
+	}
+
+	public static String getDate() {
+		Calendar c = Calendar.getInstance();
+		// 月份0--11
+		c.set(2010, 0, 1);
+		// 获取2010年1月1日的毫秒数
+		long l = c.getTimeInMillis();
+		// System.out.println(l);
+		// 设置日历时间为当前的日期
+		c.setTime(new Date());
+		// 当前时间的毫秒数
+		long l2 = c.getTimeInMillis();
+		// System.out.println(l2);
+
+			long x = l + (long) (Math.random() * (l2 - l));
+			// 用毫秒数设置为当前日历日期
+			c.setTimeInMillis(x);
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			String str = df.format(c.getTime());
+		return str;
+		
 	}
 
 	public static String randomChineseString2(int length) {
