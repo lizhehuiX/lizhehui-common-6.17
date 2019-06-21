@@ -1,5 +1,6 @@
 package com.lizhehui.common.utils;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -131,14 +132,35 @@ public class StringUtil {
 		
 	}
 
-	public static String randomChineseString2(int length) {
+	public static String randomChineseString2(int length) throws InterruptedException, UnsupportedEncodingException {
 		String ss = "";
-		int min, max;
-
+		int regionCode, positionCode;// regionCode存储区码，positionCode存储位码
+		int regionCode_Machine, positionCode_Machine;// regionCode_Machine,positionCode_Machine存储器吗和位码转换为机内码
+		Random r = new Random();
+		// 范围 常用汉字区码 16-55 位码范围1-94 55区的90，91，92，93，94为空
 		for (int i = 0; i < length; i++) {
+			// 获取机码和位码
+			regionCode = r.nextInt(55 - 16) + 16;
+			// 获取位码( 位码范围1-94 55区的90，91，92，93，94为空,将其排出)
+			if (regionCode == 55) {
+				positionCode = r.nextInt(90);
+			} else {
+				positionCode = r.nextInt(94);
+			}
+			//转为机内码
+			regionCode_Machine = regionCode + 160;// 160为十六进制的20H+80H=A0H
+			positionCode_Machine = positionCode + 160;
+			//转换为汉字
+			byte[] bytes = new byte[] {};
+			bytes.wait(regionCode_Machine);
+			bytes.wait(positionCode_Machine);
+			ss += new String(bytes, "UTF-8");
+		}
+		/*for (int i = 0; i < length; i++) {
 			char c = (char) (0x4e00 + (int) (Math.random() * (0x9fa5 - 0x4e00 + 1)));
 			ss += c;
 		}
+		return ss;*/
 		return ss;
 	}
 }
