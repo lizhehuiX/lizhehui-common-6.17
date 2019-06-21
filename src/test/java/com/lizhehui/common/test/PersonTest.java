@@ -27,7 +27,7 @@ public class PersonTest {
 	public void GetTestperson() {
 		for (int i = 0; i < 100; i++) {
 			Person p = new Person(StringUtil.generateChineseName(), RandomUtil.random(1, 120),
-					StringUtil.randomChineseString(140), StringUtil.getDate());
+					StringUtil.randomChineseStringGBK(140), StringUtil.getDate());
 			// System.out.println(p);
 			System.out.println(p);
 		}

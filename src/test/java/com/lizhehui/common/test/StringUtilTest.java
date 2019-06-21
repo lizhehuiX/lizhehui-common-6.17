@@ -37,14 +37,18 @@ public class StringUtilTest {
 
 	/**
 	 * <br>
-	 * Description:TODO 方法功能描述 <br>
+	 * Description:随即中文方法功能描述 <br>
 	 * Author:李哲辉(1989773396@qq.com) <br>
 	 * Date:2019年6月17日
 	 */
 	@Test
 	public void testRandomChineseString() {
-
 		System.out.println(StringUtil.randomChineseString(10));
+	}
+
+	@Test
+	public void testRandomChineseStringGBK() {
+		System.out.println(StringUtil.randomChineseStringGBK(10));
 	}
 
 	/**

@@ -75,7 +75,7 @@ public class StringUtil {
 	// 方法3：返回参数length个中文汉字字符串，字符集必须在GB2312(相当于中文简体)范围内，例如“中呀被”(5分)
 	/**
 	 * <br>
-	 * Description:返回参数length个中文汉字字符串方法功能描述 <br>
+	 * Description:返回参数length个中文汉字字符串方法功能描述（非简体中文） <br>
 	 * Author:李哲辉(1989773396@qq.com) <br>
 	 * Date:2019年6月17日
 	 * 
@@ -106,7 +106,7 @@ public class StringUtil {
 		Random r = new Random();
 		String name = "";
 		String c = sname[r.nextInt(sname.length - 1)];
-		name += c + randomChineseString(RandomUtil.random(1, 2));
+		name += c + randomChineseStringGBK(RandomUtil.random(1, 2));
 		return name;
 	}
 
@@ -132,7 +132,17 @@ public class StringUtil {
 		
 	}
 
-	public static String randomChineseString2(int length) throws InterruptedException, UnsupportedEncodingException {
+	/**
+	 * <br>
+	 * Description:生成简体中文方法功能描述 <br>
+	 * Author:李哲辉(1989773396@qq.com) <br>
+	 * Date:2019年6月21日
+	 * @param length
+	 * @return
+	 * @throws InterruptedException
+	 * @throws UnsupportedEncodingException
+	 */
+	public static String randomChineseStringGBK(int length) {
 		String ss = "";
 		int regionCode, positionCode;// regionCode存储区码，positionCode存储位码
 		int regionCode_Machine, positionCode_Machine;// regionCode_Machine,positionCode_Machine存储器吗和位码转换为机内码
@@ -151,16 +161,14 @@ public class StringUtil {
 			regionCode_Machine = regionCode + 160;// 160为十六进制的20H+80H=A0H
 			positionCode_Machine = positionCode + 160;
 			//转换为汉字
-			byte[] bytes = new byte[] {};
-			bytes.wait(regionCode_Machine);
-			bytes.wait(positionCode_Machine);
-			ss += new String(bytes, "UTF-8");
+			byte[] bytes = new byte[] { (byte) regionCode_Machine, (byte) positionCode_Machine };
+			try {
+				ss += new String(bytes, "GBK");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		/*for (int i = 0; i < length; i++) {
-			char c = (char) (0x4e00 + (int) (Math.random() * (0x9fa5 - 0x4e00 + 1)));
-			ss += c;
-		}
-		return ss;*/
 		return ss;
 	}
 }
