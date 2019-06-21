@@ -115,15 +115,15 @@ public class StringUtil {
 		// 月份0--11
 		c.set(2010, 0, 1);
 		// 获取2010年1月1日的毫秒数
-		long l = c.getTimeInMillis();
+		long L = c.getTimeInMillis();
 		// System.out.println(l);
 		// 设置日历时间为当前的日期
 		c.setTime(new Date());
 		// 当前时间的毫秒数
-		long l2 = c.getTimeInMillis();
+		long L2 = c.getTimeInMillis();
 		// System.out.println(l2);
 
-			long x = l + (long) (Math.random() * (l2 - l));
+		long x = L + (long) (Math.random() * (L2 - L));
 			// 用毫秒数设置为当前日历日期
 			c.setTimeInMillis(x);
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
