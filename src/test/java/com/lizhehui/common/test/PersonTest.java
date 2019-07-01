@@ -13,6 +13,8 @@ import com.lizhehui.common.utils.StringUtil;
  * Author:李哲辉(1989773396@qq.com) <br>
  * Date:2019年6月17日
  */
+//@ContextConfiguration(locations = "classpath:spring-beans.xml")
+//@RunWith(SpringJUnit4ClassRunner.class) 
 public class PersonTest {
 
 
@@ -25,11 +27,10 @@ public class PersonTest {
 	 */
 	@Test
 	public void GetTestperson() {
-		for (int i = 0; i < 100; i++) {
+		// for (int i = 0; i < 100; i++) {
 			Person p = new Person(StringUtil.generateChineseName(), RandomUtil.random(1, 120),
 					StringUtil.randomChineseStringGBK(140), StringUtil.getDate());
-			// System.out.println(p);
 			System.out.println(p);
-		}
+		// }
 	}
 }

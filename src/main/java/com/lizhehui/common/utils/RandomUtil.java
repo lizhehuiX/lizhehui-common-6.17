@@ -57,10 +57,10 @@ public class RandomUtil {
 	// 方法4：返回参数length个字符串(5分)，方法内部要调用randomCharacter()方法 (4分)
 	public static String randomString(int length) {
 		String ss = "";
-		 for(int i=0;i<length;i++) {
+		for (int i = 0; i < length; i++) {
 			ss += randomCharacter();
 		}
-		
+
 		return ss;
 
 	}

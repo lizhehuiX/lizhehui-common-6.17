@@ -95,7 +95,7 @@ public class StringUtil {
 	// 方法4：返回中文姓名，必须以真实姓开头，百家姓在“六、附百家姓”里，名使用1-2个随机汉字(8分)，内部调用randomChineseString()方法(3分)。返回示例：“刘呀被”、“欧阳及为”
 	/**
 	 * <br>
-	 * Description:TODO 方法功能描述 <br>
+	 * Description:生成名字方法功能描述 <br>
 	 * Author:李哲辉(1989773396@qq.com) <br>
 	 * Date:2019年6月17日
 	 * 
@@ -110,11 +110,19 @@ public class StringUtil {
 		return name;
 	}
 
+	/**
+	 * <br>
+	 * Description:获取1980年到当前日期方法功能描述 <br>
+	 * Author:李哲辉(1989773396@qq.com) <br>
+	 * Date:2019年6月28日
+	 * 
+	 * @return
+	 */
 	public static String getDate() {
 		Calendar c = Calendar.getInstance();
 		// 月份0--11
-		c.set(2010, 0, 1);
-		// 获取2010年1月1日的毫秒数
+		c.set(1980, 0, 1);
+		// 获取1980年1月1日的毫秒数
 		long L = c.getTimeInMillis();
 		// System.out.println(l);
 		// 设置日历时间为当前的日期
@@ -122,7 +130,6 @@ public class StringUtil {
 		// 当前时间的毫秒数
 		long L2 = c.getTimeInMillis();
 		// System.out.println(l2);
-
 		long x = L + (long) (Math.random() * (L2 - L));
 			// 用毫秒数设置为当前日历日期
 			c.setTimeInMillis(x);
@@ -170,5 +177,102 @@ public class StringUtil {
 			}
 		}
 		return ss;
+	}
+
+
+	/**
+	 * <br>
+	 * Description:统一小写 空格变为- 方法功能描述 <br>
+	 * Author:李哲辉(1989773396@qq.com) <br>
+	 * Date:2019年6月28日
+	 * @param str
+	 * @return
+	 */
+	public static String toUniqueTerm(String str) {
+		return str.toLowerCase().replaceAll(" ", "-");
+	}
+
+	/**
+	 * <br>
+	 * Description:随机获取一个指定日期到现在日期的 方法功能描述 <br>
+	 * Author:李哲辉(1989773396@qq.com) <br>
+	 * Date:2019年6月28日
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static Date getDateSection(String date) {
+		String[] s = date.split("-");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH-mm-SS");
+		/*
+		 * for (String string : s) { System.out.println(string); }
+		 */
+		Calendar c = Calendar.getInstance();
+		long d1 = c.getTimeInMillis();
+		c.set(Integer.parseInt(s[0]), Integer.parseInt(s[1]), Integer.parseInt(s[2]));
+		long d2 = c.getTimeInMillis();
+		long x = d2 + (long) (Math.random() * (d1 - d2));
+		c.setTimeInMillis(x);
+		//设置日期
+		return c.getTime();
+
+	}
+
+	/**
+	 * 方法3：判断是否为手机号码 -是返回true 不是返回false <br>
+	 * Description:TODO 方法功能描述 <br>
+	 * Author:李哲辉(1989773396@qq.com) <br>
+	 * Date:2019年7月1日
+	 * 
+	 * @param src
+	 * @return
+	 */
+	public static boolean isMobile(String src) {
+		String mobile = "^(1[74358])\\d{9}$";
+		if (src.matches(mobile)) {
+			return true;
+		} else {
+			return false;
+		}
+		// 实现代码
+	}
+
+	/**
+	 * 
+	 * <br>
+	 * Description:TODO 判断是否为邮箱功能描述 <br>
+	 * 是返回true 不是返回false<br/>
+	 * Author:李哲辉(1989773396@qq.com) <br>
+	 * Date:2019年6月13日
+	 * 
+	 * @param src
+	 * @return
+	 */
+	public static boolean isEmail(String src) {
+		String email = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$";
+
+		if (src.matches(email)) {
+			return true;
+		}
+		return false;
+
+	}
+
+	/**
+	 * 方法5：反转字符串，例如参数值是“abcdefg”，则输出“gfedcba” (5分) <br>
+	 * Description:TODO 方法功能描述 <br>
+	 * Author:李哲辉(1989773396@qq.com) <br>
+	 * Date:2019年7月1日
+	 * 
+	 * @param src
+	 * @return
+	 */
+	public static String reverse(String src) {
+		String src1 = "";
+		for (int i = src.length() - 1; i >= 0; i--) {
+			char ch = src.charAt(i);
+			src1 += ch;
+		}
+		return src1;
 	}
 }

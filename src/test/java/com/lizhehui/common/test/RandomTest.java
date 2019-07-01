@@ -11,6 +11,8 @@ import com.lizhehui.common.utils.RandomUtil;
  * Author:李哲辉(1989773396@qq.com) <br>
  * Date:2019年6月17日
  */
+//@ContextConfiguration(locations = "classpath:spring-beans.xml")
+//@RunWith(SpringJUnit4ClassRunner.class) 
 public class RandomTest {
 
 	/**
@@ -21,7 +23,7 @@ public class RandomTest {
 	 */
 	@Test
 	public void random() {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.println(RandomUtil.random(1, 6));
 		}
 	}
@@ -34,7 +36,7 @@ public class RandomTest {
 	 */
 	@Test
 	public void subRandom() {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.println(RandomUtil.subRandom(1, 10, 9));
 		}
 	}
@@ -47,7 +49,7 @@ public class RandomTest {
 	 */
 	@Test
 	public void randomCharacter() {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.println(RandomUtil.randomCharacter());
 		}
 	}
@@ -60,7 +62,7 @@ public class RandomTest {
 	 */
 	@Test
 	public void randomString() {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			System.out.println(RandomUtil.randomString(4));
 		}
 	}
