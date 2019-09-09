@@ -30,6 +30,17 @@ public class RandomUtil {
 		int sum = min + r.nextInt(max - min + 1);
 		return sum;
 	}
+	// 方法1：随机男女
+	public static String randomSex() {
+		Random r = new Random();
+		int sum =r.nextInt(2);
+		if(sum==1){
+			return "男";
+		}else if(sum==0){
+			return "女";
+		}
+		return sum+"";
+	}
 
 	// 方法2：在最小值min与最大值max之间截取subs个不重复的随机数。
 	// 例如在1-10之间取3个不重复的随机数，那么[2,6,9]是对的，[3,5,5]则不对，因为5重复了。
